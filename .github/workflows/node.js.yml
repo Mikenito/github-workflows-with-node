@@ -10,8 +10,20 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build:
+  checks:
+    runs-on: ubuntu-latest
+    name: Intialization
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
 
+      - name: Intialization
+        run: |
+          echo "This is the initiation phase...!"
+          echo "Initialization phase complete."
+
+  build:
+    needs: checks
     runs-on: ubuntu-latest
 
     strategy:
